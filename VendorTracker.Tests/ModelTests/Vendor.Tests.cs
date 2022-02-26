@@ -1,14 +1,19 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendorTracker.Models;
+using System.Collections.Generic;
 
 namespace VendorTracker.Tests
 {
   [TestClass]
-  public class VendorTests
+  public class VendorTests : IDisposable
   {
+    public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
     [TestMethod]
-    public void VendorConstructor_CreatesInstanceOfItem()
+    public void VendorConstructor_CreatesInstanceOfVendor()
     {
       Vendor newVendor = new Vendor("test", "test");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
@@ -49,5 +54,29 @@ namespace VendorTracker.Tests
       Assert.AreEqual(updatedName, resultName);    
       Assert.AreEqual(updatedDescription, resultDescription);
     }
+
+    [TestMethod]
+    public void GetAll_ReturnsVendors_VendorList()
+    {
+      //Arrange
+      string name1 = "Suzie's Cafe";
+      string description1 = "Suzie's Cafe is owned by Suzie McSuzieFace. Top client!";
+      string name2 = "Marty's Grocery";
+      string description2 = "Grocery store owned by Marty McSmarty.";
+      Vendor newVendor1 = new Vendor(name1, description1);
+      Vendor newVendor2 = new Vendor(name2, description2);
+      List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+
+      //Act
+      List<Vendor> result = Vendor.GetAll();
+
+      foreach (Vendor thisVendor in result)
+      {
+        Console.WriteLine("Output from second GetAll test: " + thisVendor.Description);
+      }
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }    
   }
 }
