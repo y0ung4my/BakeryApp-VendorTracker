@@ -33,27 +33,10 @@ namespace VendorTracker.Controllers
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Vendor selectedVendor = Vendor.Find(id);
-      List<Order> vendorOrders = selectedVendor.Orders; 
+
       model.Add("vendor", selectedVendor);
-      model.Add("orders", vendorOrders); 
+
       return View(model);
     }
-
-
-    // This one creates new Items within a given Category, not new Categories:
-
-    // [HttpPost("/vendors/{vendorId}/orders")]
-    // public ActionResult Create(int vendorId, string orderTitle, string orderDescription, string orderPrice, string orderDate)
-    // {
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   Vendor foundVendor = Vendor.Find(vendorId);
-    //   Order newOrder = new Order(orderTitle, orderDescription, orderPrice, orderDate);
-    //   foundVendor.AddOrder(newOrder);
-    //   List<Order> vendorOrders = foundVendor.Orders;
-    //   model.Add("orders", vendorOrders);
-    //   model.Add("vendors", foundVendor);
-    //   return View("Show", model);
-    // }
-
   }
 }
