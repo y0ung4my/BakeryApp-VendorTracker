@@ -100,5 +100,23 @@ namespace VendorTracker.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectVendor_Vendor()
+    {
+      //Arrange
+      string name1 = "Suzie's Cafe";
+      string description1 = "Suzie's Cafe is owned by Suzie McSuzieFace. Top client!";
+      string name2 = "Marty's Grocery";
+      string description2 = "Grocery store owned by Marty McSmarty.";
+      Vendor newVendor1 = new Vendor(name1, description1);
+      Vendor newVendor2 = new Vendor(name2, description2);
+
+      //Act
+      Vendor result = Vendor.Find(2);
+
+      //Assert
+      Assert.AreEqual(newVendor2, result);
+    }
   }
 }
