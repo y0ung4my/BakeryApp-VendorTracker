@@ -102,5 +102,26 @@ namespace VendorTracker.Tests
       CollectionAssert.AreEqual(newList, result);
     }    
 
+    [TestMethod]
+    public void Find_ReturnsCorrectOrder_Order()
+    {
+      //Arrange
+      string title1 = "Recurring croissant order for Suzie's Cafe";
+      string description1 = "50 croissants, daily";
+      string price1 = "$75/day";
+      string date1 = "2/26/2022";
+      string title2 = "Recurring bread order for Marty's Grocery";
+      string description2 = "50 loaves of bread delivered every Sunday and Thursday";
+      string price2 = "$300/week";
+      string date2 = "2/26/2022";
+      Order newOrder1 = new Order(title1, description1, price1, date1);
+      Order newOrder2 = new Order(title2, description2, price2, date2);
+
+      //Act
+      Order result = Order.Find(2);
+
+      //Assert
+      Assert.AreEqual(newOrder2, result);
+    }
   }
 }
