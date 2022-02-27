@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VendorTracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+  </head>
+  <body>
+    <h1>Order Details for Vendor <strong>@Model["vendor"].Name</strong>: </h1>
+
+    <h2>Title: @Model["order"].Title</h2>
+    <h2>Description: @Model["order"].Description</h2>
+    <h2>Price: @Model["order"].Price</h2>
+    <h2>Date: @Model["order"].Date</h2>
+
+    <a href='/vendors/@Model["vendor"].Id/orders/new'>Add another order</a>
+    <a href='/vendors'>View all vendors</a>
+  </body>
+</html>
