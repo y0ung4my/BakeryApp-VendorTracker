@@ -113,7 +113,7 @@ namespace VendorTracker.Tests
       Vendor newVendor2 = new Vendor(name2, description2);
 
       //Act
-      Vendor result = Vendor.Find(2);
+      Vendor result = Vendor.Find((2 -1));
 
       //Assert
       Assert.AreEqual(newVendor2, result);

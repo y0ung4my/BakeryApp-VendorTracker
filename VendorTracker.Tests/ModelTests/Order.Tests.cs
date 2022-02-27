@@ -118,7 +118,7 @@ namespace VendorTracker.Tests
       Order newOrder2 = new Order(title2, description2, price2, date2);
 
       //Act
-      Order result = Order.Find(2);
+      Order result = Order.Find((2 - 1));
 
       //Assert
       Assert.AreEqual(newOrder2, result);
